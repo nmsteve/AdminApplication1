@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels;
+using System.Runtime.Remoting.Channels.Http;
 using PTSLibrary;
 
 namespace AdminApplication
@@ -23,7 +26,14 @@ namespace AdminApplication
         public frmAdmin()
         {
             InitializeComponent();
-            facade = new PTSAdminFacade();
+            // Create the server channel.
+            HttpChannel channel = new HttpChannel();
+
+            // Register the server channel.
+            ChannelServices.RegisterChannel(channel, false);
+
+            facade = 
+                (PTSAdminFacade)RemotingServices.Connect(typeof(PTSAdminFacade), "http://localhost:50000/PTSAdminFacade");
             adminId = 0;
         }
 
