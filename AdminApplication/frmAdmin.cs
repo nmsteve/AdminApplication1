@@ -108,7 +108,7 @@ namespace AdminApplication
             }
             teams = facade.GetListOfTeams();
             cbTeams.DataSource = teams;
-            cbTeams.DisplayMember = "Name";
+            cbTeams.DisplayMember = "NameAndStatus";
             cbTeams.ValueMember = "TeamId";
         }
 
@@ -125,7 +125,7 @@ namespace AdminApplication
         {
             tasks = facade.GetListOfTasks(selectedProject.ProjectId);
             lbTasks.DataSource = tasks;
-            lbTasks.DisplayMember = "Name";
+            lbTasks.DisplayMember = "NameAndStatus";
             lbTasks.ValueMember = "TaskId";
         }
 
