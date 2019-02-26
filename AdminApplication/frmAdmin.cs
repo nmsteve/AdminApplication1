@@ -125,7 +125,7 @@ namespace AdminApplication
         {
             tasks = facade.GetListOfTasks(selectedProject.ProjectId);
             lbTasks.DataSource = tasks;
-            lbTasks.DisplayMember = "NameAndStatus";
+            lbTasks.DisplayMember = "Name";
             lbTasks.ValueMember = "TaskId";
         }
 
